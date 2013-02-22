@@ -1,0 +1,31 @@
+extends layout
+
+block content
+	h1 Welcome #{title}
+	br
+	div(class="row")
+		div(id="newPadcontainer", class="span6")
+			div(id="new")
+				label(for="inviteFriends") Invite friends 
+				input(id="inviteFriends")
+				button(id="newPad") Create New Status
+			div(id="myPads")
+			
+	
+		div(id="joinPadcontainer", class="span6")
+			div(id="join")
+				label(for="sessionCode") Join your friends 
+				input(id="sessionCode")
+				button(id="joinSession") Join Session NOW!!
+			div(id="joinPads")
+				//- include _etherpad
+		
+
+	script
+		var friendArr = [];
+		var allFriends = !{allfriends};
+		//console.log(allFriends);
+		for (i = 0; i< allFriends.length; i++){
+			friendArr.push(allFriends[i].name);
+		}
+		
