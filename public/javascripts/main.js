@@ -58,7 +58,8 @@ $(function(){
           var id = $(this).attr('id');
           console.log(id);
           $.post('/postFB', {padID: id}, function(data){
-              console.log(data);
+              // console.log(data);
+              $('#myPads').append(data);
           });
         });
 			});
@@ -72,12 +73,7 @@ $(function(){
         var id = $(this).attr('id');
         console.log(id);
         $.post('/postFB', {padID: id}, function(data){
-          // if($(this).parent().parent().attr('id') == 'myPads') {
-          //   $("#myPads").append(data);
-          // }
-          // else {
-          //   $("")
-          // }
+            $('#joinPads').append(data);
         });
       });
 		});

@@ -21,7 +21,7 @@ var userSchema = mongoose.Schema({
 var padSchema = mongoose.Schema({
 	'padID' : String, 
 	'authors': [],
-	'posted' : Boolean
+	'posted' : {type: Boolean, default: false}
 });
 
 var newUser = mongoose.model('User', userSchema);

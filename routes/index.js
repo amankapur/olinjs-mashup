@@ -62,7 +62,8 @@ exports.newPad = function(req, res){
 				res.sendEmail('email', {
 					to: friendData.username + '@facebook.com',
 					subject: 'OLIN MASHUP!!!!',
-					code: pdname
+					code: pdname, 
+					user: req.session.user.name
 				}, function(err, data){
 					if(err) return console.log("ERROR", err);
 					console.log('email sent')
@@ -70,16 +71,6 @@ exports.newPad = function(req, res){
 				});
 		});
 	}
-	//console.log(pdname);
-	// TEST MAILER, WORKS LIKE A BAWSS!!!!
-	// res.sendEmail('email', {
-	// 	to: 'amankapur91@gmail.com',
-	// 	subject: 'OLIN MASHUP!!!!',
-	// 	code: "TEST CODE"
-	// }, function(err, data){
-	// 	if(err) return console.log("ERROR", err);
-	// 	console.log(data);
-	// });
 
 	ether.etherpad.createGroupPad(args, function(err, data){
 		
@@ -128,7 +119,7 @@ exports.postFB = function(req, res){
 		  for (i = 0; i < authors.length; i++){
 		 	 req.facebook.api('/'+authors[i] + '/feed', 'POST', {message: message}, function(err, data){
 		 	 	if(err) return console.log('ERROR POSTING to FACEBOOK', err);
-		 	 	res.send("success");
+		 	 	res.render('_success');
 		 	 })
 		  }
 		});
